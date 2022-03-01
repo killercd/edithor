@@ -2,6 +2,10 @@ from curses import COLOR_BLACK
 from tkinter import *
 from turtle import bgcolor
 from actions import Actions
+from os import walk
+
+from plugin.power_text.plugin import Plugin
+
 
 class TextEditor:
 
@@ -33,6 +37,10 @@ class TextEditor:
     self.filemenu.add_command(label="Exit",accelerator="Ctrl+E",command=self.actions.exit)
     self.menubar.add_cascade(label="File", menu=self.filemenu)
 
+    
+    
+    
+
     self.editmenu = Menu(self.menubar,font=("times new roman",12,"bold"),activebackground="skyblue",tearoff=0)
     self.editmenu.add_command(label="Cut",accelerator="Ctrl+X",command=self.actions.cut)
     self.editmenu.add_command(label="Copy",accelerator="Ctrl+C",command=self.actions.copy)
@@ -45,12 +53,21 @@ class TextEditor:
     self.helpmenu.add_command(label="About",command=self.actions.infoabout)
     self.menubar.add_cascade(label="Help", menu=self.helpmenu)
 
+
+    self.plugin = Menu(self.menubar,font=("times new roman",12,"bold"),activebackground="skyblue",tearoff=0)
+    
+    self.menubar.add_cascade(label="Plugin", menu=self.plugin)
+
+    from plugin.power_text import plugin
+    ptext_plugin = Plugin(self)
+
+
     scrol_y = Scrollbar(self.root,orient=VERTICAL)
     scrol_x = Scrollbar(self.root,orient=HORIZONTAL)
     self.txtarea = Text(self.root,
                         xscrollcommand=scrol_x.set, 
                         yscrollcommand=scrol_y.set,
-                        font=("times new roman",15,"bold"),
+                        font=("times new roman",12,"bold"),
                         state="normal",
                         relief=GROOVE,
                         background="black",
