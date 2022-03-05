@@ -73,7 +73,8 @@ class TextEditor:
                         background="black",
                         foreground="white",
                         insertbackground="white",
-                        wrap=NONE
+                        wrap=NONE,
+                        undo=True
                         )
 
 

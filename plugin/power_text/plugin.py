@@ -23,7 +23,7 @@ class Plugin():
             text ="grep").pack()
         self.grep_text = tkinter.Text(newWindow, height = 5, width = 52)
         self.grep_text.pack()
-        button_grep = tkinter.Button(newWindow, text ="Hello", command = self.grep_line).pack()
+        button_grep = tkinter.Button(newWindow, text ="grep", command = self.grep_line).pack()
 
     def grep_line(self):
         grep_text = self.grep_text.get("1.0","end-1c")
